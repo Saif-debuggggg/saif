@@ -1,0 +1,74 @@
+{% set componentName = "wil-product-funiture" %}
+
+<div class="{{ componentName }}-2 shopify-product-magic group* pos:relative d:flex fld:column jc:flex-end w:100% lh:1.5 bgc:#EAE7E2 trs:all_0.3s bdrs:20px mih:100% ar:298/394 ov:hidden" style="{{ background }};--star-stroke-color: #FEAA01;--star-color: #FEAA01;--tooltip-background: #000;--tooltip-color: #fff;--color-secondary:#000000;--color-primary:#ffffff;" data-product-id="{{item.id}}">
+  {% if item.featuredImage %}
+    {% set imageSize = data.responsive.lg ? 1400 / data.responsive.lg : 400 %}
+      <div class="{{ componentName }}-2__img pos:absolute t:0 l:0 bgp:center bgz:cover w:100% ar:298/394 z:3 trs:all_0.3s z:1" style="background-image: url('{{ item.featuredImage.large.src | resize(imageSize) }}')"></div>
+
+  {% endif %}
+  {% if item.outOfStock %}
+    <div class="{{ componentName }}-2__overlay pos:absolute t:50% l:0 trf:translateY(-50%) w:100% h:20% mih:60px d:flex jc:center ai:center">
+      <div class="pos:absolute w:100% h:100% bgc:#000000 op:0.5 z:8" style="{{backgroundPrimary}}"></div>
+      <span class="soldOutTextTypo c:#ffffff z:9 td:none fz:20px tt:uppercase" style="{{colorSecondaryCssVariable}};{{soldOutTextTypo}}">{{translates.soldOutText}}</span>
+    </div>
+  {% endif %}
+  <div class="d:flex fld:column jc:center fxw:wrap ai:center p:23px_20px bgc:#000000 bdrs:20px z:2 trs:all_0.3s trf:translateY(105%)*group-hover">
+    {% if item.title %}
+      <a href="{{item.link}}" class="{{ componentName }}-2__name titleTypo m:0 fz:pfs(16px,21px) fw:500 tt:capitalize ta:left td:none! c:#ffffff w:fit-content" style="{{ titleTypo }}{{colorGray9CssVariable}}">{{ item.title }}</a>
+    {% endif %}
+    {% if item.price and item.onSale %}
+      <div class="d:flex jc:flex-start ai:center flw:wrap mt:5px">
+        <div class="{{ componentName }}-2__price-compare regularPriceTypo fz:pfs(15px,21px) fw:600 c:#ffffff td:line-through mr:9px" style="{{ regularPriceTypo }}{{colorGray7CssVariable}}">{{ item.price[0] }}</div>
+
+        <div class="{{ componentName }}-2__price salePriceTypo fz:18px fw:400 c:#878480" style="{{ salePriceTypo }}{{colorPrimaryCssVariable}}">{{ item.price[1] }}</div>
+      </div>
+    {% else %}
+      <div class="d:flex jc:flex-start ai:center mt:5px">
+        <div class="{{ componentName }}-2__price regularPriceTypo fz:pfs(15px,21px) fw:600 c:#ffffff" style="{{ regularPriceTypo }}{{colorPrimaryCssVariable}}">{{ item.price[0] }}</div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="pos:absolute b:0 l:0 p:10px z:2 op:0 op:1*group-hover trs:all_0.3s w:100% trf:translateY(100%) trf:translateY(0)*group-hover">
+    <div class="d:flex fld:column jc:center fxw:wrap w:100% p:17px_20px_20px_20px bgc:#ffffff bdrs:20px z:3">
+      <div class="d:flex jc:space-between ai:center w:100%">
+        {% if item.reviews %}
+          <div class="{{ componentName }}-2__rattings d:flex ai:center">
+            <span class="d:flex ai:center mr:5px">
+              <i class="fas fa-star fz:13px c:#FBA300" style: colorRating ? "color:" ~ colorRating : ""></i>
+            </span>
+            <span class="fz:15px fw:500 c:#350424">{{item.reviews.average}}</span>
+            <span class="fz:15px fw:300 c:#9E9E9E">({{item.reviews.ratingCount}})</span>
+          </div>
+        {% endif %}
+         {% if item.price and item.onSale %}
+            <div class="d:flex jc:flex-start ai:center flw:wrap">
+              <div class="{{ componentName }}-2__price-compare regularPriceTypo fz:pfs(15px,18px) fw:400 c:#878480 td:line-through mr:9px" style="{{ regularPriceTypo }}{{colorGray7CssVariable}}">{{ item.price[0] }}</div>
+
+              <div class="{{ componentName }}-2__price salePriceTypo fz:pfs(15px,21px) fw:600 c:#000000" style="{{ salePriceTypo }}{{colorPrimaryCssVariable}}">{{ item.price[1] }}</div>
+            </div>
+          {% else %}
+            <div class="d:flex jc:flex-start ai:center">
+              <div class="{{ componentName }}-2__price regularPriceTypo fz:pfs(15px,21px) fw:600 c:#000000" style="{{ regularPriceTypo }}{{colorPrimaryCssVariable}}">{{ item.price[0] }}</div>
+            </div>
+          {% endif %}
+      </div>
+      {% if item.title %}
+        <a href="{{item.link}}" class="{{ componentName }}-2__name titleTypo m:0 fz:pfs(15px,21px) fw:500 tt:capitalize ta:left td:none! c:#000000 w:fit-content mt:10px!" style="{{ titleTypo }}{{colorGray9CssVariable}}">{{ item.title }}</a>
+      {% endif %}
+
+      {% if translates.addCartText and not item.outOfStock %}
+        <a href="?add-to-cart={{item.id}}" data-quantity="1" class="{{ componentName }}-2__btn buttonTextTypo button product_type_simple add_to_cart_button ajax_add_to_cart pos:relative d:inline-block bxsh:none o:0 td:none! w:fit-content p:13px_20px bdrs:10px bgc:#000000 bgc:#ffffff|h c:#ffffff c:#000000|h fz:16px fw:500 cur:pointer d:flex! jc:center ai:center ta:center m:0! mt:20px! mr:10px bd:1px_solid_#000000 trs:all_0.3s" data-product_id="{{item.id}}" data-product_sku="{{item.sku}}" aria-label="Add {{item.title}} to your cart" rel="nofollow" style="{{buttonTextTypo}}{{colorButtonCart}}{{backgroundCart}}{{colorTooltip}}{{backgroundTooltip}}">
+          {% if iconCart.url %}
+            <img class="w:15px h:15px mr:10px" src="{{ iconCart.url }}" alt="">
+          {% else %}
+            <span class="mr:10px">
+              <i class="{{ iconCart }} fz:16px"></i>
+            </span>
+          {% endif %}
+          <span>{{translates.addCartText}}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+

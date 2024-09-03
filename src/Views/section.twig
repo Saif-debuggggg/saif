@@ -1,0 +1,47 @@
+{% set componentName = "wil-product-funiture" %}
+
+{% set products = data.productCustoms.products.items %}
+{% set titleTypo = data.typography.titleTypo %}
+{% set availableTypo = data.typography.availableTypo %}
+{% set salePriceTypo = data.typography.salePriceTypo %}
+{% set regularPriceTypo = data.typography.regularPriceTypo %}
+{% set buttonTextTypo = data.typography.buttonTextTypo %}
+{% set soldOutTextTypo = data.typography.soldOutTextTypo %}
+{% set enableCart = data.actions.enableCart %}
+{% set iconCart = data.actions.iconCart %}
+{% set enableQuickView = data.actions.enableQuickView %}
+{% set iconQuickView = data.actions.iconQuickView %}
+{% set enableWishList = data.actions.enableWishList %}
+{% set iconWishList = data.actions.iconWishList %}
+{% set responsive = data.responsive %}
+{% set carousel = data.carousel %}
+{% set colors = data.colors %}
+{% set backgroundColor = data.colors.backgroundColor %}
+{% set translates = data.translates %}
+{% set colorGray7 = colors.gray7 %}
+{% set colorGray8 = colors.gray8 %}
+{% set colorGray9 = colors.gray9 %}
+{% set colorPrimary = colors.primary %}
+{% set colorSecondary = colors.secondary %}
+{% set colorRating = colors.rating %}
+
+{% set columnStyles = '--col-xs:' ~ data.responsive.xs ~ ';--col-sm:' ~ data.responsive.sm ~ ';--col-md:' ~ data.responsive.md ~ ';--col-lg:' ~ data.responsive.lg %}
+{% set gapStyles = '--gap-xs:' ~ data.responsive.gapXs ~ 'px;--gap-sm:' ~ data.responsive.gapSm ~ 'px;--gap-md:' ~ data.responsive.gapMd ~ 'px;--gap-lg:' ~ responsive.gapLg ~ 'px' %}
+
+{% set background = backgroundColor ? 'background-color:' ~ backgroundColor ~ ';' : '' %}
+{% set colorTooltip = colorSecondary ? '--tooltip-color:' ~ colorSecondary ~ ';' : '' %}
+{% set backgroundTooltip = colorPrimary ? '--tooltip-background:' ~ colorPrimary ~ ';' : '' %}
+{% set colorButtonCart = colorPrimary ? 'color:' ~ colorPrimary ~ ';' : '' %}
+{% set backgroundCart = colorSecondary ? 'background-color:' ~ colorSecondary ~ ';' ~ '--color-secondary:' ~ colorSecondary ~ ';' ~ 'background:' ~ colorSecondary ~ ';' : '' %}
+{% set backgroundPrimary = colorPrimary ? 'background-color:' ~ colorPrimary ~ ';' ~ '--color-primary:' ~ colorPrimary ~ ';' : '' %}
+{% set backgroundSecondary = colorSecondary ? 'background-color:' ~ colorSecondary ~ ';' ~ '--color-secondary:' ~ colorSecondary ~ ';' : '' %}
+{% set colorPrimaryCssVariable = colorPrimary ? 'color:' ~ colorPrimary ~ ';' ~ '--color-primary:' ~ colorPrimary ~ ';' : '' %}
+{% set colorSecondaryCssVariable = colorSecondary ? 'color:' ~ colorSecondary ~ ';' ~ '--color-secondary:' ~ colorSecondary ~ ';' : '' %}
+{% set colorGray7CssVariable = colorGray7 ? 'color:' ~ colorGray7 ~ ';' : '' %}
+{% set colorGray8CssVariable = colorGray8 ? 'color:' ~ colorGray8 ~ ';' : '' %}
+{% set colorGray9CssVariable = colorGray9 ? 'color:' ~ colorGray9 ~ ';' : '' %}
+{% set colorVar = colorGray7CssVariable ~ colorGray8CssVariable ~ colorGray9CssVariable ~ colorPrimaryCssVariable ~ colorSecondaryCssVariable %}
+
+<style>{{ data.customCSS.code }}</style>
+
+{% include "Containers/" ~ data.productCustoms.variant ~ ".twig"  %}

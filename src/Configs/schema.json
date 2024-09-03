@@ -1,0 +1,520 @@
+[
+  {
+    "id": "productCustoms",
+    "type": "section",
+    "name": "productCustoms",
+    "label": "Product",
+    "default": [],
+    "fields": [
+      {
+        "id": "productCustoms_variant",
+        "type": "select",
+        "default": "variant1",
+        "name": "variant",
+        "label": "Product Variant",
+        "options": {
+          "variant1": "Variant 1",
+          "variant2": "Variant 2",
+          "variant3": "Variant 3",
+          "variant4": "Variant 4"
+        }
+      },
+      {
+        "id": "productCustoms_products",
+        "type": "wil_product",
+        "name": "products",
+        "label": "Products",
+        "default": {
+          "orderBy": "date",
+          "order": "desc",
+          "limit": 4,
+          "tag": [],
+          "filter": "all",
+          "categories": [],
+          "products": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "actions",
+    "type": "section",
+    "name": "actions",
+    "label": "Actions",
+    "default": [],
+    "fields": [
+      {
+        "id": "actions_enableCart",
+        "type": "switcher",
+        "name": "enableCart",
+        "label": "Button Cart",
+        "default": true
+      },
+      {
+        "id": "actions_iconCart",
+        "type": "icons",
+        "default": {
+          "value": "fas fa-shopping-bag",
+          "library": "fa-solid"
+        },
+        "name": "iconCart",
+        "label": "Icon Cart",
+        "condition": {
+          "actions_enableCart": true
+        }
+      },
+      {
+        "id": "actions_enableQuickView",
+        "type": "switcher",
+        "name": "enableQuickView",
+        "label": "Button Quick View",
+        "default": true
+      },
+      {
+        "id": "actions_iconQuickView",
+        "type": "icons",
+        "default": {
+          "value": "fas fa-eye",
+          "library": "fa-solid"
+        },
+        "name": "iconQuickView",
+        "label": "Icon Quick View",
+        "condition": {
+          "actions_enableQuickView": true
+        }
+      },
+      {
+        "id": "actions_enableWishList",
+        "type": "switcher",
+        "name": "enableWishList",
+        "label": "Wish List",
+        "default": true
+      },
+      {
+        "id": "actions_iconWishList",
+        "type": "icons",
+        "default": {
+          "value": "fas fa-heart",
+          "library": "fa-solid"
+        },
+        "name": "iconWishList",
+        "label": "Icon Wish List",
+        "condition": {
+          "actions_enableWishList": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "translates",
+    "type": "section",
+    "name": "translates",
+    "label": "Translate",
+    "default": [],
+    "fields": [
+      {
+        "id": "translates_addCartText",
+        "type": "text",
+        "name": "addCartText",
+        "label": "Add To Cart",
+        "default": "Add To Cart"
+      },
+      {
+        "id": "translates_addWishListText",
+        "type": "text",
+        "name": "addWishListText",
+        "label": "Add To Wish List",
+        "default": "Add To Wish List"
+      },
+      {
+        "id": "translates_removeWishListText",
+        "type": "text",
+        "name": "removeWishListText",
+        "label": "Remove From Wish List",
+        "default": "Remove From Wish List"
+      },
+      {
+        "id": "translates_quickViewText",
+        "type": "text",
+        "name": "quickViewText",
+        "label": "Quick View",
+        "default": "Quick View"
+      },
+      {
+        "id": "translates_soldOutText",
+        "type": "text",
+        "default": "Sold Out",
+        "name": "soldOutText",
+        "label": "Sold Out"
+      },
+      {
+        "id": "translates_inStockText",
+        "type": "text",
+        "default": "In Stock",
+        "name": "inStockText",
+        "label": "In Stock",
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "translates_outStockText",
+        "type": "text",
+        "default": "Out of Stock",
+        "name": "outStockText",
+        "label": "Out of Stock",
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant3",
+            "variant4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "responsive",
+    "type": "section",
+    "name": "responsive",
+    "label": "Responsive",
+    "default": [],
+    "fields": [
+      {
+        "id": "responsive_lg",
+        "type": "number",
+        "name": "lg",
+        "label": "Column Large",
+        "min": 1,
+        "max": 10,
+        "default": 4,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_md",
+        "type": "number",
+        "name": "md",
+        "label": "Column Medium",
+        "min": 1,
+        "max": 10,
+        "default": 3,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_sm",
+        "type": "number",
+        "name": "sm",
+        "label": "Column Small",
+        "min": 1,
+        "max": 10,
+        "default": 2,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_xs",
+        "type": "number",
+        "name": "xs",
+        "label": "Column Extra Small",
+        "min": 1,
+        "max": 10,
+        "default": 1,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_gapLg",
+        "type": "number",
+        "name": "gapLg",
+        "label": "Gap Large",
+        "min": 0,
+        "max": 60,
+        "default": 30,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_gapMd",
+        "type": "number",
+        "name": "gapMd",
+        "label": "Gap Medium",
+        "min": 0,
+        "max": 60,
+        "default": 30,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_gapSm",
+        "type": "number",
+        "name": "gapSm",
+        "label": "Gap Small",
+        "min": 0,
+        "max": 60,
+        "default": 30,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "responsive_gapXs",
+        "type": "number",
+        "name": "gapXs",
+        "label": "Gap Extra Small",
+        "min": 0,
+        "max": 60,
+        "default": 30,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "carousel",
+    "type": "section",
+    "name": "carousel",
+    "label": "Carousel",
+    "default": [],
+    "fields": [
+      {
+        "id": "carousel_enable",
+        "type": "switcher",
+        "name": "enable",
+        "label": "Enable",
+        "default": false,
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "carousel_buttonEnable",
+        "type": "switcher",
+        "name": "buttonEnable",
+        "label": "Button Enable",
+        "default": true,
+        "condition": {
+          "carousel_enable": true
+        }
+      },
+      {
+        "id": "carousel_paginationEnable",
+        "type": "switcher",
+        "name": "paginationEnable",
+        "label": "Pagination Enable",
+        "default": true,
+        "condition": {
+          "carousel_enable": true
+        }
+      },
+      {
+        "id": "carousel_buttonColor",
+        "type": "color",
+        "name": "buttonColor",
+        "label": "Button Color",
+        "default": "#000",
+        "condition": {
+          "carousel_enable": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "colors",
+    "type": "section_style",
+    "name": "colors",
+    "label": "Colors",
+    "default": [],
+    "fields": [
+      {
+        "id": "colors_primary",
+        "type": "color",
+        "name": "primary",
+        "label": "Primary ",
+        "default": ""
+      },
+      {
+        "id": "colors_secondary",
+        "type": "color",
+        "name": "secondary",
+        "label": "Secondary",
+        "default": ""
+      },
+      {
+        "id": "colors_gray7",
+        "type": "color",
+        "name": "gray7",
+        "label": "Gray 7",
+        "default": ""
+      },
+      {
+        "id": "colors_gray8",
+        "type": "color",
+        "name": "gray8",
+        "label": "Gray 8",
+        "default": ""
+      },
+      {
+        "id": "colors_gray9",
+        "type": "color",
+        "name": "gray9",
+        "label": "Gray 9",
+        "default": ""
+      },
+      {
+        "id": "colors_rating",
+        "type": "color",
+        "name": "rating",
+        "label": "Rating",
+        "default": ""
+      },
+      {
+        "id": "colors_backgroundColor",
+        "type": "color",
+        "default": "",
+        "name": "backgroundColor",
+        "label": "Background"
+      }
+    ]
+  },
+  {
+    "id": "typography",
+    "type": "section_style",
+    "name": "typography",
+    "label": "Typography",
+    "default": [],
+    "fields": [
+      {
+        "id": "typography_titleTypo",
+        "type": "typography",
+        "label": "Title",
+        "name": "titleTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .titleTypo"
+      },
+      {
+        "id": "typography_availableTypo",
+        "type": "typography",
+        "label": "Available",
+        "name": "availableTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .availableTypo",
+        "condition": {
+          "productCustoms_variant": [
+            "variant1",
+            "variant2",
+            "variant3",
+            "variant4"
+          ]
+        }
+      },
+      {
+        "id": "typography_salePriceTypo",
+        "type": "typography",
+        "label": "Sale Price",
+        "name": "salePriceTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .salePriceTypo"
+      },
+      {
+        "id": "typography_regularPriceTypo",
+        "type": "typography",
+        "label": "Regular Price",
+        "name": "regularPriceTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .regularPriceTypo"
+      },
+      {
+        "id": "typography_buttonTextTypo",
+        "type": "typography",
+        "label": "Button",
+        "name": "buttonTextTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .buttonTextTypo"
+      },
+      {
+        "id": "typography_soldOutTextTypo",
+        "type": "typography",
+        "label": "Sold Out",
+        "name": "soldOutTextTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .soldOutTextTypo"
+      }
+    ]
+  },
+  {
+    "id": "customCSS",
+    "type": "section_style",
+    "name": "customCSS",
+    "label": "Custom CSS",
+    "default": [],
+    "fields": [
+      {
+        "id": "customCSS_code",
+        "type": "code",
+        "name": "code",
+        "label": "Code",
+        "language": "css",
+        "rows": 4,
+        "default": ""
+      }
+    ]
+  }
+]

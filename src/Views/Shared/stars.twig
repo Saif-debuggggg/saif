@@ -1,0 +1,18 @@
+{% set componentName = "wil-product-funiture" %}
+{% for i in 1..5 %}
+  {% if average > 0 %}
+    {% if average >= i %}
+      <i class="fas fa-star {{ class }}" style="{{ style }}"></i>
+    {% else %}
+      {% set cond = average matches '/' ~ (i - 1) ~ './' %}
+      {% if cond %}
+        <i class="fas fa-star-half-alt {{ class }}" style="{{ style }}"></i>
+      {% else %}
+        <i class="far fa-star {{ class }}" style="{{ style }}"></i>
+      {% endif %}
+    {% endif %}
+  {% else %}
+    <i class="far fa-star {{ class }}" style="{{ style }}"></i>
+  {% endif %}
+
+{% endfor %}

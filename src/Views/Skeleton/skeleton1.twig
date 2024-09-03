@@ -1,0 +1,27 @@
+{% set componentName = "wil-product-funiture" %}
+{% set colorPrimary = colorPrimary ? 'color:' ~ colorPrimary ~ ';' ~ '--color-primary:' ~ colorPrimary ~ ';' : '' %}
+{% set colorSecondary = colorSecondary ? 'color:' ~ colorSecondary ~ ';' ~ '--color-secondary:' ~ colorSecondary ~ ';' : '' %}
+{% set backgroundPrimary = backgroundPrimary ? 'background-color:' ~ backgroundPrimary ~ ';' : '' %}
+{% set backgroundSecondary = backgroundSecondary ? 'background-color:' ~ backgroundSecondary ~ ';' : '' %}
+{% set colorGray7 = colorGray7 ? 'color:' ~ colorGray7 ~ ';' : '' %}
+{% set colorGray8 = colorGray8 ? 'color:' ~ colorGray8 ~ ';' : '' %}
+{% set colorGray9 = colorGray9 ? 'color:' ~ colorGray9 ~ ';' : '' %}
+{% set backgroundGray9 = colorGray9 ? 'background-color:' ~ colorGray9 ~ ';' : '' %}
+{% set colorRating = colorRating ? '--star-stroke-color:' ~ colorRating ~ ';' ~ '--star-color:' ~ colorRating ~ ';' : '' %}
+{% set colorTooltip = colorSecondary ? '--tooltip-color:' ~ colorSecondary ~ ';' : '' %}
+{% set backgroundTooltip = colorPrimary ? '--tooltip-background:' ~ colorPrimary ~ ';' : '' %}
+<div class="{{ componentName }}-1 fil:drop-shadow(0px_2px_16px_rgba(0,0,0,0.06))" style="background-color:#ffffff;border-radius:16px;overflow:hidden;position:relative;border:1px solid #F4F3F2;filter:drop-shadow(0px_2px_16px_rgba(0,0,0,0.06));min-height:100%">
+
+    <a style="display:block;position:relative;margin-bottom:0 !important;overflow: hidden">
+      <div class="bgp:center bgz:cover bdrs:15px_15px_0px_0px pt:110% w:100% trf:scale(1.1)*group-hover z:3 trs:all_0.3s bgc:#000" style="{{backgroundGray9}};opacity: 0.1;"></div>
+    </a>
+    <div style="display:flex;flex-direction:column;width:40px;height:200px;position:absolute;top:0;right:10px"></div>
+      <div class="bgc:#000" style="{{backgroundGray9}};opacity: 0.1;width:75%;height:10px;margin:10px; border-radius:10px"></div>
+
+    <div class="bgc:#000" style="{{backgroundGray9}}opacity: 0.1;width:50%;height:10px;margin:10px; border-radius:10px"></div>
+    <div class="d:flex jc:space-between pb:16px fxw:wrap" style="margin-left:10px;align-items:center;">
+      <div class="bgc:#000" style="{{backgroundGray9}}opacity: 0.1;width:20%;height:10px; border-radius:10px"></div>
+
+    </div>
+
+</div>

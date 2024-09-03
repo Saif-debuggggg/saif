@@ -1,0 +1,116 @@
+{% set componentName = "wil-product-funiture" %}
+
+<div class="{{ componentName }}-5 shopify-product-magic group* pos:relative c:#000 lh:1.5 ta:center bd:1px_solid_#F4F3F2 bdrs:15px ov:hidden mih:100%" style="{{ background }};--star-stroke-color: #FEAA01;--star-color: #FEAA01;--tooltip-background: #000;--tooltip-color: #fff;--color-secondary:#fff;--color-primary:#000;" data-product-id="{{item.id}}">
+
+  {% if item.featuredImage %}
+    <a href="{{item.link}}" class="{{ componentName }}-5__img d:block pos:relative mb:0! bgp:center bgz:cover ov:hidden bdrs:15px_15px_0px_0px">
+      {% set imageSize = data.responsive.lg ? 1400 / data.responsive.lg : 400 %}
+      <div class="bgp:center bgz:cover pt:110% w:100% trf:scale(1.1)*group-hover z:3 trs:all_0.3s bdrs:15px_15px_0px_0px" style="background-image: url('{{ item.featuredImage.large.src | resize(imageSize) }}')"></div>
+      {% if item.outOfStock %}
+        <div class="{{ componentName }}-5__overlay pos:absolute t:50% l:50% trf:translate(-50%,-50%) w:100% h:20% mih:60px d:flex jc:center ai:center">
+          <div class="pos:absolute w:100% h:100% bgc:#000000 op:0.5 z:8" style="{{backgroundPrimary}}"></div>
+          <span class="soldOutTextTypo c:#ffffff z:9 td:none fz:20px tt:uppercase" style="{{colorSecondaryCssVariable}}{{soldOutTextTypo}}">{{translates.soldOutText}}</span>
+        </div>
+      {% endif %}
+    </a>
+  {% endif %}
+  <div class="d:flex fld:column w:40px h:200px pos:absolute t:0 r:20px">
+    {% if enableWishList %}
+      <div data-row-id="{{item.id}}" class="wishlist_table">
+        <div data-id={{item.id}} class="{{ componentName }}-5__wishlist btn-wishlist pos:relative d:flex jc:center ai:center w:40px h:40px bdrs:50% cur:pointer z:999  trf:translateX(100px) trf:translateX(0)*group-hover trs:all_0.4s mt:20px">
+          <a data-product-id="{{item.id}}" class="add_to_wishlist single_add_to_wishlist pos:absolute d:flex jc:center ai:center bgc:#ffffff bgc:#000000|h t:0 l:0 w:40px h:40px bdrs:50% cur:pointer {% if item.inWishList %}z:998 op:0{% else %}z:999 op:1{% endif %} bd:1px_solid_#F4F3F2 bgc:#000000|h c:#000000 c:#ffffff|h fz:14px td:none!" data-tooltip-text="{{translates.addWishListText}}" data-tooltip-position="left" data-tooltip-active-text="{{translates.removeWishListText}}" data-tooltip-active="false" style="{{colorPrimaryCssVariable}}{{backgroundSecondary}}{{colorTooltip}}{{backgroundTooltip}};border:1px solid #e5e5e5 !important">
+            {% if iconWishList.url %}
+              <img class="w:20px h:20px" src="{{ iconWishList.url }}" alt="">
+            {% else %}
+                <i class="{{ iconWishList }} fz:14px" style="{{colorPrimaryCssVariable}};"></i>
+            {% endif %}
+          </a>
+          <a data-product-id="{{item.id}}" class="remove_from_wishlist pos:absolute d:flex jc:center ai:center t:0 l:0 w:40px h:40px bdrs:50% cur:pointer {% if item.inWishList %}z:999 op:1{% else %}z:998 op:0{% endif %} bd:1px_solid_#ccc bgc:#000000  bgc:#ffffff|h c:#ffffff c:#000000|h trs:all_0.3s fz:14px td:none!" data-tooltip-text="{{translates.addWishListText}}" data-tooltip-position="left" data-tooltip-active-text="{{translates.removeWishListText}}" data-tooltip-active="true" style="{{colorPrimaryCssVariable}}{{backgroundSecondary}}{{colorTooltip}}{{backgroundTooltip}};border:1px solid #e5e5e5 !important">
+            {% if iconWishList.url %}
+              <img class="w:20px h:20px" src="{{ iconWishList.url }}" alt="">
+            {% else %}
+                <i class="{{ iconWishList }} fz:14px trs:all_0.3s" style="{{colorSecondaryCssVariable}};"></i>
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+    {% if not item.outOfStock and enableCart %}
+      <div class="mt:20px!" data-tooltip-text="{{translates.addCartText}}" data-tooltip-position="left" style="{{colorTooltip}}{{backgroundTooltip}}">
+        <a href="?add-to-cart={{item.id}}" data-quantity="1" class="{{ componentName }}-5__cart buttonTextTypo button product_type_simple add_to_cart_button ajax_add_to_cart d:flex! jc:center ai:center bgc:#ffffff w:40px h:40px bdrs:50% cur:pointer z:999 trf:translateX(100px) trf:translateX(0)*group-hover trs:all_0.5s c:color-gray9 p:0! bd:none! c:#000000 mt:0px! bgc:#000000|h c:#ffffff|h fz:14px" data-product_id="{{item.id}}" data-product_sku="{{item.sku}}" aria-label="Add {{item.title}} to your cart" rel="nofollow"  style="{{buttonTextTypo}}{{colorPrimaryCssVariable}}{{backgroundSecondary}}{{colorButtonCart}}{{backgroundCart}}{{colorTooltip}}{{backgroundTooltip}};border:1px solid #e5e5e5 !important">
+          {% if iconCart.url %}
+            <img class="w:20px h:20px" src="{{ iconCart.url }}" alt="">
+          {% else %}
+              <i class="{{ iconCart }} fz:14px"></i>
+          {% endif %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+  <div class="p:13px_20px_16px_20px">
+    {% if item.outOfStock %}
+      <div class="{{ componentName }}-5__available availableTypo fz:12px fw:400 c:#BAB7B3 ta:left" style="{{availableTypo}}{{colorGray8CssVariable}}">{{translates.outStockText}}</div>
+    {% else %}
+      <div class="{{ componentName }}-5__available availableTypo fz:12px fw:400 c:#BAB7B3 ta:left" style="{{availableTypo}}{{colorGray8CssVariable}}">{{translates.inStockText}}</div>
+    {% endif %}
+
+    {% if item.title %}
+      <div class="d:flex ai:center ta:left jc:flex-start w:100%">
+        <a href="{{item.link}}" class="{{ componentName }}-5__name titleTypo m:0 fz:pfs(15px,20px) fw:600! c:#31261B ta:left mt:8px tt:capitalize d:inline-block w:100% td:none!" style="{{ titleTypo }}{{colorGray8CssVariable}}">{{ item.title }}</a>
+      </div>
+    {% endif %}
+
+    {% if item.reviews %}
+      <div class="d:flex jc:flex-start">
+        <div class="d:flex jc:center {{ componentName }}-5__rattings mt:4px c:transparent">
+          {% include "Shared/stars.twig" with {
+            average: item.reviews.average,
+            class: "fz:13px c:#FEAA01 pl:1px pr:1px",
+            style: colorRating ? "color:" ~ colorRating : ""
+          } %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="d:flex jc:space-between fxw:wrap mt:5px">
+
+        {% if item.price and item.onSale %}
+          <div class="d:flex jc:flex-start ai:center flw:wrap">
+            <div class="{{ componentName }}-5__price-compare regularPriceTypo fz:15px fw:400! c:#BAB7B3 td:line-through mr:9px" style="{{ regularPriceTypo }}{{colorGray7CssVariable}}">{{ item.price[0] }}</div>
+
+            <div class="{{ componentName }}-5__price salePriceTypo fz:20px fw:600! c:#0a0e20" style="{{ salePriceTypo }};{{colorPrimaryCssVariable}}">{{ item.price[1] }}</div>
+          </div>
+        {% else %}
+          <div class="d:flex jc:flex-start ai:center">
+            <div class="{{ componentName }}-5__price regularPriceTypo fz:20px fw:600! c:#0a0e20" style="{{ regularPriceTypo }};{{colorPrimaryCssVariable}}">{{ item.price[0] }}</div>
+          </div>
+        {% endif %}
+        {% if enableQuickView %}
+          <div class="{{ componentName }}-5__quickview wil-product-quickview-js d:flex jc:center ai:center bgc:#0a0e20 w:40px h:40px bdrs:50% cur:pointer fz:14px c:#ffffff bgc:#000000|h c:#ffffff|h fz:14px" data-tooltip-text="{{translates.quickViewText}}" data-tooltip-position="left" style="{{colorPrimaryCssVariable}}{{backgroundSecondary}}{{colorTooltip}}{{backgroundTooltip}}">
+            {% if iconQuickView.url %}
+              <img class="w:20px h:20px" src="{{ iconQuickView.url }}" alt="">
+            {% else %}
+                <i class="{{ iconQuickView }} fz:14px" style="{{colorPrimaryCssVariable}}"></i>
+            {% endif %}
+            <script class="product-card-data-js" type="application/json">
+              {{ item | json_encode()}}
+            </script>
+            <script class="product-card-data-style-js" type="application/json">
+            {
+              "titleTypo": "{{ titleTypo }}",
+              "salePriceTypo": "{{ salePriceTypo }}",
+              "regularPriceTypo": "{{ regularPriceTypo }}",
+              "buttonTextTypo": "{{ buttonTextTypo }}",
+              "colorBackground": "{{backgroundColor}}",
+              "colorPrimary": "{{colorPrimary}}",
+              "colorGray7": "{{colorGray7}}",
+              "colorGray8": "{{colorGray8}}",
+              "colorGray9": "{{colorGray9}}",
+              "colorRating": "{{colorRating}}"
+            }
+          </script>
+          </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
